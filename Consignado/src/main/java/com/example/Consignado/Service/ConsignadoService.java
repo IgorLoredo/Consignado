@@ -109,7 +109,6 @@ public class ConsignadoService {
         }
     }
 
-
     public ConsignadoResponseDTO consigando(ConsignadoRequestDTO requestDTO){
         try {
         Optional<SimulacaoModel> simulacaoModel = simulacaoRepository.findById(requestDTO.getIdConsigando());

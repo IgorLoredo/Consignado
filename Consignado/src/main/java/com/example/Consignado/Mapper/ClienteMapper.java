@@ -20,6 +20,8 @@ public interface ClienteMapper {
     @Mapping(source = "convenio",target = "convenio", qualifiedByName = "getConvenio")
     ClienteResponseDTO modelToResponse(ClienteModel clienteModel);
 
+    @Mapping(source = "segmento",target = "segmento", qualifiedByName = "getSegmento")
+    @Mapping(source = "convenio",target = "convenio", qualifiedByName = "getConvenio")
     List<ClienteResponseDTO> modelsToResponse(List<ClienteModel> list);
 
     @Named("getSegmento")

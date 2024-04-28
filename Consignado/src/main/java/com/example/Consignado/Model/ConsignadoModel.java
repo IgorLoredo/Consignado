@@ -23,6 +23,7 @@ public class ConsignadoModel {
     private BigDecimal valorTotal;
     private BigDecimal valorParcela;
 
+    private long idSimulacao;
     public ConsignadoModel() {
     }
 
@@ -113,5 +114,12 @@ public class ConsignadoModel {
         return valorParcela;
     }
 
+    public long getIdSimulacao() {
+        return idSimulacao;
+    }
+
+    public void setIdSimulacao(long idSimulacao) {
+        this.idSimulacao = idSimulacao;
+    }
 
 }

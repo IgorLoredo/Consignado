@@ -1,7 +1,7 @@
 package com.example.Consignado.Mapper;
 
-import com.example.Consignado.Controller.Enum.Convenio;
-import com.example.Consignado.Controller.Enum.Segmento;
+import com.example.Consignado.Enum.Convenio;
+import com.example.Consignado.Enum.Segmento;
 import com.example.Consignado.Model.ClienteModel;
 import com.example.Consignado.Model.DTO.Response.ClienteResponseDTO;
 import org.mapstruct.Mapper;

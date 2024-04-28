@@ -19,6 +19,7 @@ public interface ConsignadoMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "dataContrato", source = "dataSimulacao")
     @Mapping(target = "cpfCliente", source = "cpf")
+    @Mapping(target = "idSimulacao", source = "id")
     ConsignadoModel simulacaoToConsignado(SimulacaoModel simulacao);
 
     @Mapping(source = "dataContrato", target = "dataContrato")

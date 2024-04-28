@@ -116,7 +116,7 @@ public class ConsignadoService {
 
         ConsignadoModel consignadoModel = ConsignadoMapper.INSTANCE.simulacaoToConsignado(simulacaoModel.get());
         consignadoRepository.save(consignadoModel);
-        simulacaoRepository.delete(simulacaoModel.get());
+
         ConsignadoResponseDTO responseDTO = ConsignadoMapper.INSTANCE.modelToResponse(consignadoModel);
         return responseDTO;
         } catch (Exception ex) {

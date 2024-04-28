@@ -13,8 +13,7 @@ public class ConsignadoResponseDTO {
     private int quantidadeParcelas;
     private BigDecimal valorTotal;
     private BigDecimal valorParcela;
-
-    // Construtores, getters e setters
+    private long idSimulacao;
 
     // Construtor vazio
     public ConsignadoResponseDTO() {
@@ -106,4 +105,13 @@ public class ConsignadoResponseDTO {
     public void setValorParcela(BigDecimal valorParcela) {
         this.valorParcela = valorParcela;
     }
+
+    public long getIdSimulacao() {
+        return idSimulacao;
+    }
+
+    public void setIdSimulacao(long idSimulacao) {
+        this.idSimulacao = idSimulacao;
+    }
+
 }

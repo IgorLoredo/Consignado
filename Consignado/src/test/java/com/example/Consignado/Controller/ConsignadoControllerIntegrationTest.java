@@ -1,7 +1,7 @@
 package com.example.Consignado.Controller;
 
-import com.example.Consignado.Controller.Enum.Convenio;
-import com.example.Consignado.Controller.Enum.Segmento;
+import com.example.Consignado.Enum.Convenio;
+import com.example.Consignado.Enum.Segmento;
 import com.example.Consignado.Model.DTO.Request.ConsignadoRequestDTO;
 import com.example.Consignado.Model.DTO.Request.SimulacaoRequestDTO;
 import com.example.Consignado.Model.DTO.Response.ClienteResponseDTO;

@@ -32,10 +32,14 @@ Para garantir a qualidade da aplicação, foram implementados testes unitários 
 curl --location --request GET 'http://localhost:8000/v0/consignado/simulacoes/075.178.955-08' \
 --header 'Content-Type: application/json' \
 ```
-2. **Obter Detalhes do Cliente**: Este recurso permite aos usuários recuperar detalhes de um cliente associado a um CPF específico.
+2. **Realizar consignado**: Este recurso permite realizar o contrato de um consignado específico.
  ````
- curl --location --request GET 'http://localhost:8000/v0/consignado/cliente/444.444.444-44' \
---data-raw ''
+ curl --location --request POST 'http://localhost:8000/v0/consignado/contratar' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "CPF":"075.178.955-08",
+    "idConsigando": 1
+}'
  ````
 3. **Listar Consignados por CPF**: Este recurso permite aos usuários recuperar uma lista de consignados associados a um CPF específico.
   ```
@@ -43,6 +47,7 @@ curl --location --request GET 'http://localhost:8000/v0/consignado/simulacoes/07
    --header 'Content-Type: application/json' \
    --data-raw '{"CPF1":"@##!#1"}'
    ```
+
 5. **Realizar Simulações**: Este recurso permite aos usuários realizar simulações.
 ```
 curl --location --request POST 'http://localhost:8000/v0/consignado/simulacao' \
@@ -55,7 +60,7 @@ curl --location --request POST 'http://localhost:8000/v0/consignado/simulacao' \
 ```
 6. **Listar clientes**: Este recurso lista todos os clientes na base
 ```
-curl --location --request GET 'http://localhost:8000 /v0/consignado/clientes' \
+curl --location --request GET 'http://localhost:8000/v0/consignado/clientes' \
 --data-raw ''
 ```
 
@@ -71,7 +76,7 @@ mvn spring-boot:run
 Ou pode executar o arquivo JAR gerado.
 Após clonado o projeto, abra o terminal e entre na pasta target:
 ```
-java -jar Consignado-0.0.1-SNAPSHOT.jar"
+java -jar Consignado-0.0.1-SNAPSHOT.jar
 ```
 
 

@@ -1,22 +1,22 @@
-package com.example.Consignado.Service;
+package com.example.consignado.service;
 
 
-import com.example.Consignado.ExceptionHandler.ResourceNotFoundException;
-import com.example.Consignado.Mapper.ClienteMapper;
-import com.example.Consignado.Mapper.ConsignadoMapper;
-import com.example.Consignado.Mapper.SimulacaoMapper;
+import com.example.consignado.mapper.ClienteMapper;
+import com.example.consignado.mapper.ConsignadoMapper;
+import com.example.consignado.mapper.SimulacaoMapper;
 
-import com.example.Consignado.Model.ClienteModel;
-import com.example.Consignado.Model.ConsignadoModel;
-import com.example.Consignado.Model.DTO.Request.ConsignadoRequestDTO;
-import com.example.Consignado.Model.DTO.Request.SimulacaoRequestDTO;
-import com.example.Consignado.Model.DTO.Response.ClienteResponseDTO;
-import com.example.Consignado.Model.DTO.Response.ConsignadoResponseDTO;
-import com.example.Consignado.Model.DTO.Response.SimulacaoResponseDTO;
-import com.example.Consignado.Model.SimulacaoModel;
-import com.example.Consignado.Repository.ClienteRepository;
-import com.example.Consignado.Repository.ConsignadoRepository;
-import com.example.Consignado.Repository.SimulacaoRepository;
+import com.example.consignado.model.ClienteModel;
+import com.example.consignado.model.ConsignadoModel;
+import com.example.consignado.model.dto.request.ConsignadoRequestDTO;
+import com.example.consignado.model.dto.request.SimulacaoRequestDTO;
+import com.example.consignado.model.dto.response.ClienteResponseDTO;
+import com.example.consignado.model.dto.response.ConsignadoResponseDTO;
+import com.example.consignado.model.dto.response.SimulacaoResponseDTO;
+import com.example.consignado.model.SimulacaoModel;
+import com.example.consignado.repository.ClienteRepository;
+import com.example.consignado.repository.ConsignadoRepository;
+import com.example.consignado.repository.SimulacaoRepository;
+import com.example.consignado.service.Exception.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,12 +43,12 @@ public class ConsignadoService {
         try {
             System.out.println(cpf);
             Optional<ClienteModel> clienteModel = clienteRepository.findByCpf(cpf);
-            clienteModel.orElseThrow(() ->  new ResourceNotFoundException("Cliente não encontrado"));
+            clienteModel.orElseThrow(() ->  new DatabaseException.ResourceNotFoundException("Cliente não encontrado"));
             ClienteResponseDTO clienteResponseDTO = ClienteMapper.INSTANCE.modelToResponse(clienteModel.get());
             return clienteResponseDTO;
-        } catch ( ResourceNotFoundException ex){
+        } catch ( DatabaseException.ResourceNotFoundException ex){
             System.out.println(ex);
-            throw new ResourceNotFoundException(ex.getMessage());
+            throw new DatabaseException.ResourceNotFoundException(ex.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ public class ConsignadoService {
         try {
             // validando cpf
             Optional<ClienteModel> clienteModel = clienteRepository.findByCpf(requestDTO.getCpf());
-            clienteModel.orElseThrow(() ->  new ResourceNotFoundException("Cliente não encontrado para simulação"));
+            clienteModel.orElseThrow(() ->  new DatabaseException.ResourceNotFoundException("Cliente não encontrado para simulação"));
 
             BigDecimal taxa;
             switch (clienteModel.get().getConvenio().toUpperCase()) {
@@ -111,8 +111,8 @@ public class ConsignadoService {
 
     public ConsignadoResponseDTO consigando(ConsignadoRequestDTO requestDTO){
         try {
-        Optional<SimulacaoModel> simulacaoModel = simulacaoRepository.findById(requestDTO.getIdConsigando());
-        simulacaoModel.orElseThrow(() ->  new ResourceNotFoundException("Simulação não encontrada, por favor faça uma simulação antes"));
+        Optional<SimulacaoModel> simulacaoModel = simulacaoRepository.findById(requestDTO.getId());
+        simulacaoModel.orElseThrow(() ->  new DatabaseException.ResourceNotFoundException("Simulação não encontrada, por favor faça uma simulação antes"));
 
         ConsignadoModel consignadoModel = ConsignadoMapper.INSTANCE.simulacaoToConsignado(simulacaoModel.get());
         consignadoRepository.save(consignadoModel);
@@ -139,7 +139,7 @@ public class ConsignadoService {
     public List<SimulacaoResponseDTO> listarSimulacoesPorCPF(String cpf) {
         try{
             Optional<ClienteModel> clienteModel = clienteRepository.findByCpf(cpf);
-            clienteModel.orElseThrow(() ->  new ResourceNotFoundException("Cliente não encontrado"));
+            clienteModel.orElseThrow(() ->  new DatabaseException.ResourceNotFoundException("Cliente não encontrado"));
             System.out.println("igorrr");
             List<SimulacaoModel> simulacoes = simulacaoRepository.findAllByCpf(clienteModel.get().getCpf());
             return SimulacaoMapper.INSTANCE.modelsToResponse(simulacoes);
@@ -153,7 +153,7 @@ public class ConsignadoService {
     public List<ConsignadoResponseDTO> listarConsignadosPorCPF(String cpf) {
         try{
             Optional<ClienteModel> clienteModel = clienteRepository.findByCpf(cpf);
-            clienteModel.orElseThrow(() ->  new ResourceNotFoundException("Cliente não encontrado"));
+            clienteModel.orElseThrow(() ->  new DatabaseException.ResourceNotFoundException("Cliente não encontrado"));
 
             List<ConsignadoModel> consignados = consignadoRepository.findByCpfCliente(clienteModel.get().getCpf());
             return ConsignadoMapper.INSTANCE.modelsToResponse(consignados);

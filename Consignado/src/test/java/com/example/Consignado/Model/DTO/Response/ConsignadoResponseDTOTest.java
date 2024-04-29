@@ -1,4 +1,4 @@
-package com.example.Consignado.Model.DTO.Response;
+package com.example.consignado.model.dto.response;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,13 +1,13 @@
-package com.example.Consignado.Controller;
+package com.example.consignado.controller;
 
-import com.example.Consignado.Enum.Convenio;
-import com.example.Consignado.Enum.Segmento;
-import com.example.Consignado.Model.DTO.Request.ConsignadoRequestDTO;
-import com.example.Consignado.Model.DTO.Request.SimulacaoRequestDTO;
-import com.example.Consignado.Model.DTO.Response.ClienteResponseDTO;
-import com.example.Consignado.Model.DTO.Response.ConsignadoResponseDTO;
-import com.example.Consignado.Model.DTO.Response.SimulacaoResponseDTO;
-import com.example.Consignado.Service.ConsignadoService;
+import com.example.consignado.enuns.Convenio;
+import com.example.consignado.enuns.Segmento;
+import com.example.consignado.model.dto.request.ConsignadoRequestDTO;
+import com.example.consignado.model.dto.request.SimulacaoRequestDTO;
+import com.example.consignado.model.dto.response.ClienteResponseDTO;
+import com.example.consignado.model.dto.response.ConsignadoResponseDTO;
+import com.example.consignado.model.dto.response.SimulacaoResponseDTO;
+import com.example.consignado.service.ConsignadoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -57,27 +57,27 @@ public class ConsignadoControllerIntegrationTest {
     @Test
     public void testListarSimulacoesPorCPF() throws Exception {
         List<SimulacaoResponseDTO> simulacoes = new ArrayList<>();
-        simulacoes.add(new SimulacaoResponseDTO(1L, LocalDate.now(), "12345678900", "Convenio 1",
+        simulacoes.add(new SimulacaoResponseDTO(1L, LocalDate.now(), "862.881.271-75", "Convenio 1",
                 new BigDecimal("1000.00"), new BigDecimal("0.05"), 12,
                 new BigDecimal("1100.00"), new BigDecimal("91.67")));
         when(consignadoService.listarSimulacoesPorCPF(anyString())).thenReturn(simulacoes);
 
-        mockMvc.perform(get("/v0/consignado/simulacoes/12345678900")
+        mockMvc.perform(get("/v0/consignado/simulacoes/862.881.271-75")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1))
-                .andExpect(jsonPath("$[0].cpf").value("12345678900"))
+                .andExpect(jsonPath("$[0].cpf").value("862.881.271-75"))
                 .andExpect(jsonPath("$[0].convenioCliente").value("Convenio 1"));
     }
     @Test
     public void testGetCliente() throws Exception {
-        ClienteResponseDTO cliente = new ClienteResponseDTO("12345678900", "Fulano", "S", Segmento.Varejo, Convenio.valueOf("EP"));
+        ClienteResponseDTO cliente = new ClienteResponseDTO("862.881.271-75", "Fulano", "S", Segmento.Varejo, Convenio.valueOf("EP"));
         when(consignadoService.buscarCliente(anyString())).thenReturn(cliente);
 
-        mockMvc.perform(get("/v0/consignado/cliente/12345678900")
+        mockMvc.perform(get("/v0/consignado/cliente/862.881.271-75")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.CPF").value("12345678900"))
+                .andExpect(jsonPath("$.CPF").value("862.881.271-75"))
                 .andExpect(jsonPath("$.Nome").value("Fulano"))
                 .andExpect(jsonPath("$.Correntista").value("S"));
     }
@@ -86,13 +86,13 @@ public class ConsignadoControllerIntegrationTest {
     @Test
     public void testListarConsignadosPorCPF() throws Exception {
         List<ConsignadoResponseDTO> consignados = new ArrayList<>();
-        consignados.add(new ConsignadoResponseDTO(1L, "12345678900", "Consignado 1", new BigDecimal("1000.00")));
+        consignados.add(new ConsignadoResponseDTO(1L, "862.881.271-75", "Consignado 1", new BigDecimal("1000.00")));
         when(consignadoService.listarConsignadosPorCPF(anyString())).thenReturn(consignados);
 
-        mockMvc.perform(get("/v0/consignado/consignados/12345678900")
+        mockMvc.perform(get("/v0/consignado/consignados/862.881.271-75")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].cpfCliente").value("12345678900"))
+                .andExpect(jsonPath("$[0].cpfCliente").value("862.881.271-75"))
                 .andExpect(jsonPath("$[0].convenioCliente").value("Consignado 1"));
     }
     @Test
@@ -117,7 +117,7 @@ public class ConsignadoControllerIntegrationTest {
     public void testContratacao() throws Exception {
         ConsignadoRequestDTO requestDTO = new ConsignadoRequestDTO();
         requestDTO.setCpf("862.881.271-75");
-        requestDTO.setIdConsigando(1L);
+        requestDTO.setId(1L);
 
         ConsignadoResponseDTO consignadoResponseDTO = new ConsignadoResponseDTO(1L, "862.881.271-75", "EP", new BigDecimal("1000.00"));
         when(consignadoService.consigando(requestDTO)).thenReturn(consignadoResponseDTO);

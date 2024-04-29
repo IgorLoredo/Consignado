@@ -1,12 +1,13 @@
-package com.example.Consignado.Model.DTO.Request;
+package com.example.consignado.model.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
-
+@Data
 public class ConsignadoRequestDTO {
 
     @JsonProperty("CPF")
@@ -17,22 +18,8 @@ public class ConsignadoRequestDTO {
     private String cpf;
 
     @NotNull
-    private long idConsigando;
+    private long id;
 
-    public String getCpf() {
-        return cpf;
-    }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public long getIdConsigando() {
-        return idConsigando;
-    }
-
-    public void setIdConsigando(long idConsigando) {
-        this.idConsigando = idConsigando;
-    }
 
 }

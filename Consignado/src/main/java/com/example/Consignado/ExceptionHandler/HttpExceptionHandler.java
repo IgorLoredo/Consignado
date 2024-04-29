@@ -1,9 +1,7 @@
-package com.example.Consignado.ExceptionHandler;
+package com.example.consignado.exceptionhandler;
 
-import com.example.Consignado.Service.Exception.DatabaseException;
+import com.example.consignado.service.Exception.DatabaseException;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,11 +15,8 @@ import java.time.Instant;
 @ControllerAdvice
 public class HttpExceptionHandler {
 
-    @Autowired
-    private MessageSource messageSource;
-
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<StandardError> entityNotFound(ResourceNotFoundException e, HttpServletRequest request){
+    @ExceptionHandler(DatabaseException.ResourceNotFoundException.class)
+    public ResponseEntity<StandardError> entityNotFound(DatabaseException.ResourceNotFoundException e, HttpServletRequest request){
 
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
@@ -48,8 +43,8 @@ public class HttpExceptionHandler {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ValidError>  handleMethodArgumentNotValidException(MethodArgumentNotValidException exception){
-        ValidError err = new ValidError();
+    public ResponseEntity<StandardError>  handleMethodArgumentNotValidException(MethodArgumentNotValidException exception){
+        StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(HttpStatus.BAD_REQUEST.value());
         err.setError("Campo inválido");

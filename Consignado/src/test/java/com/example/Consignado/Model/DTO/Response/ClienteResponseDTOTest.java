@@ -1,4 +1,4 @@
-package com.example.Consignado.Model.DTO.Response;// FILEPATH: /c:/Users/Igor Loredo/Documents/projetos Java/Consignado/src/test/java/com/example/Consignado/Model/DTO/Response/ClienteResponseDTOTest.java
+package com.example.consignado.model.dto.response;// FILEPATH: /c:/Users/Igor Loredo/Documents/projetos Java/Consignado/src/test/java/com/example/Consignado/Model/DTO/Response/ClienteResponseDTOTest.java
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

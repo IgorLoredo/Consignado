@@ -1,4 +1,4 @@
-package com.example.Consignado.ExceptionHandler;
+package com.example.consignado.exceptionhandler;
 
 import java.io.Serializable;
 import java.time.Instant;

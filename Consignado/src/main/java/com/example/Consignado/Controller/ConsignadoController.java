@@ -1,15 +1,16 @@
-package com.example.Consignado.Controller;
+package com.example.consignado.controller;
 
 
-import com.example.Consignado.Logger.LoggerFormatter;
-import com.example.Consignado.Model.DTO.Request.ConsignadoRequestDTO;
-import com.example.Consignado.Model.DTO.Request.SimulacaoRequestDTO;
-import com.example.Consignado.Model.DTO.Response.ClienteResponseDTO;
-import com.example.Consignado.Model.DTO.Response.ConsignadoResponseDTO;
-import com.example.Consignado.Model.DTO.Response.SimulacaoResponseDTO;
-import com.example.Consignado.Service.ConsignadoService;
+import com.example.consignado.util.LoggerFormatter;
+import com.example.consignado.model.dto.request.ConsignadoRequestDTO;
+import com.example.consignado.model.dto.request.SimulacaoRequestDTO;
+import com.example.consignado.model.dto.response.ClienteResponseDTO;
+import com.example.consignado.model.dto.response.ConsignadoResponseDTO;
+import com.example.consignado.model.dto.response.SimulacaoResponseDTO;
+import com.example.consignado.service.ConsignadoService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import lombok.extern.java.Log;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v0/consignado")
+@Log
 public class ConsignadoController {
 
     @Autowired
@@ -27,11 +29,9 @@ public class ConsignadoController {
     @GetMapping("/clientes")
     public ResponseEntity<List<ClienteResponseDTO>> listarClientes() {
         String correlationId = LoggerFormatter.generateCorrelationId();
-        LoggerFormatter.logInfo("Recebida solicitação para listar clientes.", correlationId, ConsignadoController.class);
-
+        log.info("Recebida solicitação para listar clientes. - " + correlationId);
         List<ClienteResponseDTO> clientes = consignadoService.listarClientes();
-
-        LoggerFormatter.logInfo("Clientes listados com sucesso.", correlationId, ConsignadoController.class);
+        log.info("Clientes listados com sucesso - " + correlationId);
         return ResponseEntity.ok(clientes);
     }
 
@@ -43,11 +43,9 @@ public class ConsignadoController {
                     message = "CPF deve estar no formato DDD.DDD.DDD-DD")
                     String cpf) {
         String correlationId = LoggerFormatter.generateCorrelationId();
-        LoggerFormatter.logInfo("Recebida solicitação para listar simulações com base no CPF: " + cpf, correlationId, ConsignadoController.class);
-
+        log.info("Recebida solicitação para listar simulações com base no CPF: " + cpf + " - "+ correlationId);
         List<SimulacaoResponseDTO> simulacoes = consignadoService.listarSimulacoesPorCPF(cpf);
-
-        LoggerFormatter.logInfo("Simulações listadas com sucesso.", correlationId, ConsignadoController.class);
+        log.info("Simulações listadas com sucesso." + correlationId);
         return ResponseEntity.ok(simulacoes);
     }
 
@@ -59,11 +57,9 @@ public class ConsignadoController {
                     message = "CPF deve estar no formato DDD.DDD.DDD-DD")
                     String cpf) {
         String correlationId = LoggerFormatter.generateCorrelationId();
-        LoggerFormatter.logInfo("Recebida solicitação para listar consignados com base no CPF: " + cpf, correlationId, ConsignadoController.class);
-
+        log.info("Recebida solicitação para listar consignados com base no CPF: " + cpf + " - "+ correlationId);
         List<ConsignadoResponseDTO> consignados = consignadoService.listarConsignadosPorCPF(cpf);
-
-        LoggerFormatter.logInfo("Consignados listados com sucesso.", correlationId, ConsignadoController.class);
+        log.info("Consignados listados com sucesso." + correlationId);
         return ResponseEntity.ok(consignados);
     }
 
@@ -75,33 +71,27 @@ public class ConsignadoController {
                     message = "CPF deve estar no formato DDD.DDD.DDD-DD")
                     String cpf){
         String correlationId = LoggerFormatter.generateCorrelationId();
-        LoggerFormatter.logInfo("Recebida solicitação para obter cliente com CPF: " + cpf, correlationId, ConsignadoController.class);
-
+        log.info("Recebida solicitação para obter cliente com CPF: " + cpf + " - "+ correlationId);
         ClienteResponseDTO clienteResponseDTO= consignadoService.buscarCliente(cpf);
-
-        LoggerFormatter.logInfo("Cliente obtido com sucesso.", correlationId, ConsignadoController.class);
+        log.info("Cliente obtido com sucesso. - " + correlationId);
         return ResponseEntity.ok(clienteResponseDTO);
     }
 
     @PostMapping("/simulacao")
     public ResponseEntity<SimulacaoResponseDTO> simulacao(@Valid @RequestBody SimulacaoRequestDTO request){
         String correlationId = LoggerFormatter.generateCorrelationId();
-        LoggerFormatter.logInfo("Recebida solicitação para realizar simulação com o CPF: " + request.getCpf(), correlationId, ConsignadoController.class);
-
+        log.info("Recebida solicitação para realizar simulação com o CPF: " + request.getCpf() + " - " + correlationId);
         SimulacaoResponseDTO simulacaoResponseDTO = consignadoService.simulacao(request);
-
-        LoggerFormatter.logInfo("Simulação realizada com sucesso.", correlationId, ConsignadoController.class);
+        log.info("Simulação realizada com sucesso - " + correlationId);
         return ResponseEntity.ok(simulacaoResponseDTO);
     }
 
     @PostMapping("/contratar")
     public ResponseEntity<ConsignadoResponseDTO> contratacao(@Valid @RequestBody ConsignadoRequestDTO requestDTO){
         String correlationId = LoggerFormatter.generateCorrelationId();
-        LoggerFormatter.logInfo("Recebida solicitação para contratar consignado.", correlationId, ConsignadoController.class);
-
+        log.info("Recebida solicitação para contratar consignado." + requestDTO.getCpf() + " - " + correlationId);
         ConsignadoResponseDTO consignadoResponseDTO = consignadoService.consigando(requestDTO);
-
-        LoggerFormatter.logInfo("Consignado contratado com sucesso.", correlationId, ConsignadoController.class);
+        log.info("Consignado contratado com sucesso." + correlationId);
         return ResponseEntity.ok(consignadoResponseDTO);
     }
 

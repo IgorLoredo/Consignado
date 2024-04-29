@@ -1,10 +1,12 @@
-package com.example.Consignado.Model.DTO.Response;
+package com.example.consignado.model.dto.response;
 
 
-import com.example.Consignado.Enum.Convenio;
-import com.example.Consignado.Enum.Segmento;
+import com.example.consignado.enuns.Convenio;
+import com.example.consignado.enuns.Segmento;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
+@Data
 public class ClienteResponseDTO {
 
 
@@ -22,55 +24,6 @@ public class ClienteResponseDTO {
 
     @JsonProperty("Convênio")
     private Convenio convenio;
-
-
-    public Segmento getSegmento() {
-        return segmento;
-    }
-
-    public void setSegmento(Segmento segmento) {
-        this.segmento = segmento;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Convenio getConvenio() {
-        return convenio;
-    }
-
-    public void setConvenio(Convenio convenio) {
-        this.convenio = convenio;
-    }
-
-    public String getConsignado() {
-        return correntista;
-    }
-
-    public void setConsignado(String consignado) {
-        this.correntista = consignado;
-    }
-
-    public String getCorrentista() {
-        return correntista;
-    }
-
-    public void setCorrentista(String correntista) {
-        this.correntista = correntista;
-    }
 
     public ClienteResponseDTO() {
     }

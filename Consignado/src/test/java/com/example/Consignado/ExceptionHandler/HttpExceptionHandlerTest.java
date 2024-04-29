@@ -1,7 +1,7 @@
-package com.example.Consignado.ExceptionHandler;
+package com.example.consignado.exceptionhandler;
 
 
-import com.example.Consignado.Service.Exception.DatabaseException;
+import com.example.consignado.service.Exception.DatabaseException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class HttpExceptionHandlerTest {
         HttpExceptionHandler handler = new HttpExceptionHandler();
 
         // Criação de uma exceção ResourceNotFoundException
-        ResourceNotFoundException exception = new ResourceNotFoundException("Resource not found");
+        DatabaseException.ResourceNotFoundException exception = new DatabaseException.ResourceNotFoundException("Resource not found");
 
         // Chamada do método de tratamento de exceção
         ResponseEntity<StandardError> response = handler.entityNotFound(exception, request);

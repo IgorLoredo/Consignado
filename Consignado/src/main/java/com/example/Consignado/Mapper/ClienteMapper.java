@@ -1,9 +1,9 @@
-package com.example.Consignado.Mapper;
+package com.example.consignado.mapper;
 
-import com.example.Consignado.Enum.Convenio;
-import com.example.Consignado.Enum.Segmento;
-import com.example.Consignado.Model.ClienteModel;
-import com.example.Consignado.Model.DTO.Response.ClienteResponseDTO;
+import com.example.consignado.enuns.Convenio;
+import com.example.consignado.enuns.Segmento;
+import com.example.consignado.model.ClienteModel;
+import com.example.consignado.model.dto.response.ClienteResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

@@ -1,4 +1,4 @@
-package com.example.Consignado.Model.DTO.Request;
+package com.example.consignado.model.dto.request;
 
 
 import jakarta.validation.Validation;
@@ -46,8 +46,8 @@ public class ConsignadoRequestDTOTest {
     public void testSetIdConsigando() {
         ConsignadoRequestDTO dto = new ConsignadoRequestDTO();
         long id = 12345L;
-        dto.setIdConsigando(id);
-        assertEquals(id, dto.getIdConsigando());
+        dto.setId(id);
+        assertEquals(id, dto.getId());
     }
 
 

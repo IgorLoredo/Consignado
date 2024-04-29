@@ -1,13 +1,15 @@
-package com.example.Consignado.Model.DTO.Request;
+package com.example.consignado.model.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.math.BigDecimal;
 
+@Data
 public class SimulacaoRequestDTO {
 
     @JsonProperty("CPF")
@@ -31,31 +33,5 @@ public class SimulacaoRequestDTO {
     }
     public SimulacaoRequestDTO() {
     }
-
-    public BigDecimal getValorSolicitado() {
-        return valorSolicitado;
-    }
-
-    public void setValorSolicitado(BigDecimal valorSolicitado) {
-        this.valorSolicitado = valorSolicitado;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public int getQuantParcelas() {
-        return quantParcelas;
-    }
-
-    public void setQuantParcelas(int quantParcelas) {
-        this.quantParcelas = quantParcelas;
-    }
-
-
 
 }

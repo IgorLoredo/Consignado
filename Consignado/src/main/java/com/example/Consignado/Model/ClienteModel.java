@@ -1,10 +1,12 @@
-package com.example.Consignado.Model;
+package com.example.consignado.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 
 @Entity
-@Table(name = "CLIENTE")
+@Table(name = "tb_cliente")
+@Data
 public class ClienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,51 +33,5 @@ public class ClienteModel {
         this.segmento = segmento;
         this.convenio = convenio;
     }
-    public String getSegmento() {
-        return segmento;
-    }
 
-    public void setSegmento(String segmento) {
-        this.segmento = segmento;
-    }
-
-    public String getCorrentista() {
-        return this.correntista;
-    }
-
-    public void setCorrentista(String correntista) {
-        this.correntista = correntista;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return this.cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getConvenio() {
-        return convenio;
-    }
-
-    public void setConvenio(String convenio) {
-        this.convenio = convenio;
-    }
 }

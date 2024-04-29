@@ -1,13 +1,15 @@
-package com.example.Consignado.Model;
+package com.example.consignado.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "SIMULACAO")
+@Table(name = "tb_simulacao")
+@Data
 public class SimulacaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,83 +41,4 @@ public class SimulacaoModel {
         this.valorParcela = valorParcela;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public LocalDate getDataSimulacao() {
-        return dataSimulacao;
-    }
-
-    public void setDataSimulacao(LocalDate dataSimulacao) {
-        this.dataSimulacao = dataSimulacao;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getConvenioCliente() {
-        return convenioCliente;
-    }
-
-    public void setConvenioCliente(String convenioCliente) {
-        this.convenioCliente = convenioCliente;
-    }
-
-    public BigDecimal getValorSolicitado() {
-        return valorSolicitado;
-    }
-
-    public void setValorSolicitado(BigDecimal valorSolicitado) {
-        this.valorSolicitado = valorSolicitado;
-    }
-
-    public BigDecimal getTaxaAplicada() {
-        return taxaAplicada;
-    }
-
-    public void setTaxaAplicada(BigDecimal taxaAplicada) {
-        this.taxaAplicada = taxaAplicada;
-    }
-
-    public int getQuantidadeParcelas() {
-        return quantidadeParcelas;
-    }
-
-    public void setQuantidadeParcelas(int quantidadeParcelas) {
-        this.quantidadeParcelas = quantidadeParcelas;
-    }
-
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public BigDecimal getValorParcela() {
-        return valorParcela;
-    }
-
-    public void setValorParcela(BigDecimal valorParcela) {
-        this.valorParcela = valorParcela;
-    }
-
-    public String getSegmento() {
-        return segmento;
-    }
-
-    public void setSegmento(String segmento) {
-        this.segmento = segmento;
-    }
 }

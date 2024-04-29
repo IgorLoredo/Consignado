@@ -1,6 +1,5 @@
-package com.example.Consignado.Model.DTO.Response;
+package com.example.consignado.model.dto.response;
 
-import com.example.Consignado.Model.DTO.Response.SimulacaoResponseDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;

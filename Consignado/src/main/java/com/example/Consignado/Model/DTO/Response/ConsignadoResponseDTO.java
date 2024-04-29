@@ -1,8 +1,11 @@
-package com.example.Consignado.Model.DTO.Response;
+package com.example.consignado.model.dto.response;
+
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Data
 public class ConsignadoResponseDTO {
 
     private LocalDate dataContrato;
@@ -40,78 +43,5 @@ public class ConsignadoResponseDTO {
     }
 
 
-    // Getters e setters
-
-    public LocalDate getDataContrato() {
-        return dataContrato;
-    }
-
-    public void setDataContrato(LocalDate dataContrato) {
-        this.dataContrato = dataContrato;
-    }
-
-    public String getCpfCliente() {
-        return cpfCliente;
-    }
-
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
-    }
-
-    public String getConvenioCliente() {
-        return convenioCliente;
-    }
-
-    public void setConvenioCliente(String convenioCliente) {
-        this.convenioCliente = convenioCliente;
-    }
-
-    public BigDecimal getValorSolicitado() {
-        return valorSolicitado;
-    }
-
-    public void setValorSolicitado(BigDecimal valorSolicitado) {
-        this.valorSolicitado = valorSolicitado;
-    }
-
-    public BigDecimal getTaxaAplicada() {
-        return taxaAplicada;
-    }
-
-    public void setTaxaAplicada(BigDecimal taxaAplicada) {
-        this.taxaAplicada = taxaAplicada;
-    }
-
-    public int getQuantidadeParcelas() {
-        return quantidadeParcelas;
-    }
-
-    public void setQuantidadeParcelas(int quantidadeParcelas) {
-        this.quantidadeParcelas = quantidadeParcelas;
-    }
-
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public BigDecimal getValorParcela() {
-        return valorParcela;
-    }
-
-    public void setValorParcela(BigDecimal valorParcela) {
-        this.valorParcela = valorParcela;
-    }
-
-    public long getIdSimulacao() {
-        return idSimulacao;
-    }
-
-    public void setIdSimulacao(long idSimulacao) {
-        this.idSimulacao = idSimulacao;
-    }
 
 }

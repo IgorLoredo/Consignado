@@ -1,13 +1,14 @@
-package com.example.Consignado.Model;
+package com.example.consignado.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
-@Table(name = "CONSIGNADO")
+@Table(name = "tb_consignado")
+@Data
 public class ConsignadoModel {
 
     @Id
@@ -22,8 +23,8 @@ public class ConsignadoModel {
     private int quantidadeParcelas;
     private BigDecimal valorTotal;
     private BigDecimal valorParcela;
-
     private long idSimulacao;
+
     public ConsignadoModel() {
     }
 
@@ -41,85 +42,4 @@ public class ConsignadoModel {
         this.valorParcela = valorParcela;
 
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setDataContrato(LocalDate dataContrato) {
-        this.dataContrato = dataContrato;
-    }
-
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
-    }
-
-    public void setConvenioCliente(String convenioCliente) {
-        this.convenioCliente = convenioCliente;
-    }
-
-    public void setValorSolicitado(BigDecimal valorSolicitado) {
-        this.valorSolicitado = valorSolicitado;
-    }
-
-    public void setTaxaAplicada(BigDecimal taxaAplicada) {
-        this.taxaAplicada = taxaAplicada;
-    }
-
-    public void setQuantidadeParcelas(int quantidadeParcelas) {
-        this.quantidadeParcelas = quantidadeParcelas;
-    }
-
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public void setValorParcela(BigDecimal valorParcela) {
-        this.valorParcela = valorParcela;
-    }
-
-    public LocalDate getDataContrato() {
-        return dataContrato;
-    }
-
-    public String getCpfCliente() {
-        return cpfCliente;
-    }
-
-    public String getConvenioCliente() {
-        return convenioCliente;
-    }
-
-    public BigDecimal getValorSolicitado() {
-        return valorSolicitado;
-    }
-
-    public BigDecimal getTaxaAplicada() {
-        return taxaAplicada;
-    }
-
-    public int getQuantidadeParcelas() {
-        return quantidadeParcelas;
-    }
-
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
-
-    public BigDecimal getValorParcela() {
-        return valorParcela;
-    }
-
-    public long getIdSimulacao() {
-        return idSimulacao;
-    }
-
-    public void setIdSimulacao(long idSimulacao) {
-        this.idSimulacao = idSimulacao;
-    }
-
 }

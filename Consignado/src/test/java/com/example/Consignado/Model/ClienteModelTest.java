@@ -1,4 +1,4 @@
-package com.example.Consignado.Model;
+package com.example.consignado.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

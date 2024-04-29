@@ -1,6 +1,5 @@
-package com.example.Consignado.Model.DTO.Request;
+package com.example.consignado.model.dto.request;
 
-import com.example.Consignado.Model.DTO.Request.SimulacaoRequestDTO;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;

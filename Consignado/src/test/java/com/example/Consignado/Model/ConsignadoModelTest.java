@@ -1,6 +1,6 @@
 // FILEPATH: /c:/Users/Igor Loredo/Documents/projetos Java/Consignado/src/test/java/com/example/Consignado/Model/ConsignadoModelTest.java
 
-package com.example.Consignado.Model;
+package com.example.consignado.model;
 
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;

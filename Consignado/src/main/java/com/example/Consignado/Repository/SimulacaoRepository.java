@@ -1,7 +1,7 @@
-package com.example.Consignado.Repository;
+package com.example.consignado.repository;
 
 
-import com.example.Consignado.Model.SimulacaoModel;
+import com.example.consignado.model.SimulacaoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -9,8 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface SimulacaoRepository extends JpaRepository<SimulacaoModel, UUID> {
-    Optional<SimulacaoModel> findByCpf(String cpf);
-    Optional<SimulacaoModel> findById(long id);
+   Optional<SimulacaoModel> findById(long id);
 
    List<SimulacaoModel> findAllByCpf(String cpf);
 }

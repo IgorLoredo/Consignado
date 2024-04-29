@@ -1,4 +1,4 @@
-package com.example.Consignado.ExceptionHandler;
+package com.example.consignado.exceptionhandler;
 
 import org.junit.jupiter.api.Test;
 

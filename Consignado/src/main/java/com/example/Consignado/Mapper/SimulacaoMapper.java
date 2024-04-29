@@ -1,7 +1,7 @@
-package com.example.Consignado.Mapper;
+package com.example.consignado.mapper;
 
-import com.example.Consignado.Model.DTO.Response.SimulacaoResponseDTO;
-import com.example.Consignado.Model.SimulacaoModel;
+import com.example.consignado.model.dto.response.SimulacaoResponseDTO;
+import com.example.consignado.model.SimulacaoModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

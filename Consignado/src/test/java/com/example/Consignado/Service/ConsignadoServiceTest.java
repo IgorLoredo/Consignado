@@ -1,20 +1,20 @@
 
-package com.example.Consignado.Service;
+package com.example.consignado.service;
 
-import com.example.Consignado.ExceptionHandler.ResourceNotFoundException;
-import com.example.Consignado.Model.DTO.Request.ConsignadoRequestDTO;
-import com.example.Consignado.Model.DTO.Request.SimulacaoRequestDTO;
-import com.example.Consignado.Model.DTO.Response.ClienteResponseDTO;
-import com.example.Consignado.Model.DTO.Response.ConsignadoResponseDTO;
-import com.example.Consignado.Model.DTO.Response.SimulacaoResponseDTO;
-import com.example.Consignado.Repository.ClienteRepository;
-import com.example.Consignado.Repository.ConsignadoRepository;
-import com.example.Consignado.Repository.SimulacaoRepository;
-import com.example.Consignado.Model.ClienteModel;
-import com.example.Consignado.Model.ConsignadoModel;
-import com.example.Consignado.Model.SimulacaoModel;
+import com.example.consignado.model.dto.request.ConsignadoRequestDTO;
+import com.example.consignado.model.dto.request.SimulacaoRequestDTO;
+import com.example.consignado.model.dto.response.ClienteResponseDTO;
+import com.example.consignado.model.dto.response.ConsignadoResponseDTO;
+import com.example.consignado.model.dto.response.SimulacaoResponseDTO;
+import com.example.consignado.repository.ClienteRepository;
+import com.example.consignado.repository.ConsignadoRepository;
+import com.example.consignado.repository.SimulacaoRepository;
+import com.example.consignado.model.ClienteModel;
+import com.example.consignado.model.ConsignadoModel;
+import com.example.consignado.model.SimulacaoModel;
 
 
+import com.example.consignado.service.Exception.DatabaseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,7 +65,7 @@ public class ConsignadoServiceTest {
         when(clienteRepository.findByCpf("12345678900")).thenReturn(Optional.empty());
 
         // Act & Assert
-        Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+        Assertions.assertThrows(DatabaseException.ResourceNotFoundException.class, () -> {
             consignadoService.buscarCliente("12345678900");
         });
     }
@@ -92,7 +91,7 @@ public class ConsignadoServiceTest {
         when(clienteRepository.findByCpf("12345678900")).thenReturn(Optional.empty());
 
         // Act & Assert
-        Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+        Assertions.assertThrows(DatabaseException.ResourceNotFoundException.class, () -> {
             consignadoService.simulacao(requestDTO);
         });
     }
@@ -100,16 +99,15 @@ public class ConsignadoServiceTest {
     @Test
     public void testConsignado() {
         ConsignadoRequestDTO requestDTO = new ConsignadoRequestDTO();
-        requestDTO.setIdConsigando(1L);
+        requestDTO.setId(1L);
         SimulacaoModel simulacaoModel = new SimulacaoModel();
-        when(simulacaoRepository.findById(requestDTO.getIdConsigando())).thenReturn(Optional.of(simulacaoModel));
+        when(simulacaoRepository.findById(requestDTO.getId())).thenReturn(Optional.of(simulacaoModel));
 
         ConsignadoResponseDTO result = consignadoService.consigando(requestDTO);
 
         assertNotNull(result);
-        verify(simulacaoRepository, times(1)).findById(requestDTO.getIdConsigando());
+        verify(simulacaoRepository, times(1)).findById(requestDTO.getId());
         verify(consignadoRepository, times(1)).save(any(ConsignadoModel.class));
-        verify(simulacaoRepository, times(1)).delete(simulacaoModel);
     }
     @Test
     public void testSimulacao_InvalidSegmento() {
@@ -146,7 +144,7 @@ public class ConsignadoServiceTest {
         when(clienteRepository.findByCpf("12345678900")).thenReturn(Optional.empty());
 
         // Act & Assert
-        Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+        Assertions.assertThrows(DatabaseException.ResourceNotFoundException.class, () -> {
             consignadoService.listarSimulacoesPorCPF("12345678900");
         });
     }
@@ -156,7 +154,7 @@ public class ConsignadoServiceTest {
         when(clienteRepository.findByCpf("12345678900")).thenReturn(Optional.empty());
 
         // Act & Assert
-        Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+        Assertions.assertThrows(DatabaseException.ResourceNotFoundException.class, () -> {
             consignadoService.listarConsignadosPorCPF("12345678900");
         });
     }

@@ -1,0 +1,15 @@
+com\example\Consignado\controller\ConsignadoControllerIntegrationTest.class
+com\example\Consignado\Model\ClienteModelTest.class
+com\example\Consignado\Model\DTO\request\ConsignadoRequestDTOTest.class
+com\example\Consignado\Model\DTO\Response\ConsignadoResponseDTOTest.class
+com\example\Consignado\util\LoggerFormatterTest.class
+com\example\Consignado\Model\ConsignadoModelTest.class
+com\example\Consignado\Model\DTO\request\SimulacaoRequestDTOTest.class
+com\example\Consignado\Model\DTO\Response\ClienteResponseDTOTest.class
+com\example\Consignado\service\ConsignadoServiceTest.class
+com\example\Consignado\Model\DTO\request\ClienteRequestDTOTest.class
+com\example\Consignado\Model\DTO\Response\SimulacaoResponseDTOTest.class
+com\example\Consignado\Model\SimulacaoModelTest.class
+com\example\Consignado\exceptionhandler\StandardErrorTest.class
+com\example\Consignado\ConsignadoApplicationTests.class
+com\example\Consignado\exceptionhandler\HttpExceptionHandlerTest.class
